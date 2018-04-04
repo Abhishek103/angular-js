@@ -3,7 +3,7 @@ import { IProduct } from './product';
 import { ProductService } from './product.service';
 
 @Component ({
-  selector: 'pm-products',
+  // selector: 'pm-products',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
@@ -76,12 +76,12 @@ export class ProductListComponent implements OnInit {
     //     'starRating': 4.6,
     //     'imageUrl': 'http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png'
     // }
-  //];
+  // ];
   constructor(private _productService: ProductService) {
     // this.filteredProducts = this.products;
     // this.listFilter = 'cart';
   }
-  onRatingClicked(message : string) : void {
+  onRatingClicked(message: string): void {
     this.pageTitle = 'Pagetitle:' + message;
   }
   performFilter(filterBy: string): IProduct[] {
@@ -94,8 +94,9 @@ export class ProductListComponent implements OnInit {
   }
   ngOnInit(): void {
       // console.log('test');
-      this._productService.getProducts().subscribe(products => {this.products = products; this.filteredProducts = this.products;}, error => this.errorMessage = <any>error);
-      
+      // tslint:disable-next-line:max-line-length
+      this._productService.getProducts().subscribe(products => {this.products = products; this.filteredProducts = this.products; }, error => this.errorMessage = <any>error);
+
       this.listFilter = 'cart';
   }
 }
